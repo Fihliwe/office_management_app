@@ -1,4 +1,5 @@
 const getStoredOffices = () => {
+  if (typeof window !== 'undefined') {
     const stored = localStorage.getItem('offices');
     return stored ? JSON.parse(stored) : [
       {
@@ -19,6 +20,9 @@ const getStoredOffices = () => {
         ]
       }
     ];
-  };
+  }
+
+  return []; // Default to an empty array if `window` is undefined (SSR)
+};
 
 export default getStoredOffices;
