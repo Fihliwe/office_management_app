@@ -29,6 +29,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import OfficeForm from "./OfficeForm";
+import { StaffData } from "./StaffForm";
 
 const OfficeDetail = () => {
     const { id } = useParams();
@@ -36,7 +37,8 @@ const OfficeDetail = () => {
     const [offices, setOffices] = useState(getStoredOffices());
     const [showAddStaffDialog, setShowAddStaffDialog] = useState(false);
     const [showEditStaffDialog, setShowEditStaffDialog] = useState(false);
-    const [selectedStaffMember, setSelectedStaffMember] = useState<{ id: number; firstName: string; lastName: string; avatar?: StaticImageData | null } | null>(null);
+    
+    const [selectedStaffMember, setSelectedStaffMember] = useState<StaffData | null>(null);
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
     const [showEditOfficeDialog, setShowEditOfficeDialog] = useState(false);
     const [showDeleteOfficeDialog, setShowDeleteOfficeDialog] = useState(false);
@@ -56,7 +58,7 @@ const OfficeDetail = () => {
       `${staff.firstName} ${staff.lastName}`.toLowerCase().includes(searchTerm.toLowerCase())
     );
   
-    const handleAddStaffMember = (staffData: { firstName: string; lastName: string; avatar?: StaticImageData | null }) => {
+    const handleAddStaffMember = (staffData: StaffData) => {
       const updatedOffices = offices.map((o: { id: number; staffMembers: { id: number; firstName: string; lastName: string; avatar?: StaticImageData | null }[] }) => {
         if (o.id === office.id) {
           return {
