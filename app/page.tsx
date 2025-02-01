@@ -1,14 +1,13 @@
 'use client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import OfficeList from './componentForms/OfficeList';
-import OfficeDetail from './componentForms/OfficeDetail';
+import Link from 'next/link';
+
 export default function Home() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<OfficeList />} />
-        <Route path="/office/:id" element={<OfficeDetail />} />
-      </Routes>
-    </BrowserRouter>
+    <div>
+      <h1>Office List</h1>
+      <OfficeList />
+      <Link href="/office/1">Go to Office 1</Link>
+    </div>
   );
 }
