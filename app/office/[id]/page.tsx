@@ -1,12 +1,13 @@
 'use client';
 import { useParams } from 'next/navigation';
+import OfficeDetail from '../../componentForms/OfficeDetail';
 
-export default function OfficeDetail() {
+export default function Home2() {
   const { id } = useParams();
 
   return (
     <div>
-      <h1>Office Detail - {id}</h1>
+      <OfficeDetail />
     </div>
   );
 }
