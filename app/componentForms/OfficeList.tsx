@@ -1,7 +1,6 @@
 'use client';
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import saveOffices from "../localStorage/saveOffices";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -9,13 +8,16 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import OfficeForm from "./OfficeForm";
 import { ChevronUp, ChevronDown } from "lucide-react";
 import getStoredOffices from "../localStorage/getStoredOffices";
+import { useRouter } from "next/navigation";
+
 
 
 const OfficeList = () => {
     const [offices, setOffices] = useState(getStoredOffices());
     const [showAddOfficeDialog, setShowAddOfficeDialog] = useState(false);
     const [showMoreInfo, setShowMoreInfo] = useState<{ [key: number]: boolean }>({});
-    const navigate = useNavigate();
+    const router = useRouter();
+
   
     useEffect(() => {
       saveOffices(offices);
@@ -42,7 +44,7 @@ const OfficeList = () => {
             <Card 
               key={office.id}
               className="p-4 cursor-pointer"
-              onClick={() => navigate(`/office/${office.id}`)}
+              onClick={() => router.push(`/office/${office.id}`)}
             >
               <div className="flex items-start">
                 <div className="flex-1">

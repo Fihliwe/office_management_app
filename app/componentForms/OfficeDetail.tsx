@@ -1,6 +1,5 @@
 'use client'; 
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ArrowLeft, Search, MoreVertical } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -30,10 +29,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import OfficeForm from "./OfficeForm";
 import { StaffData } from "./StaffForm";
+import { useRouter, } from "next/router";
+import { useParams } from "next/navigation";
 
 const OfficeDetail = () => {
-    const { id } = useParams();
-    const navigate = useNavigate();
+    const { id } = useParams() as { id: string };
+    const router = useRouter();
     const [offices, setOffices] = useState(getStoredOffices());
     const [showAddStaffDialog, setShowAddStaffDialog] = useState(false);
     const [showEditStaffDialog, setShowEditStaffDialog] = useState(false);
@@ -114,13 +115,13 @@ const OfficeDetail = () => {
     const handleDeleteOffice = () => {
       const updatedOffices = offices.filter((o: { id: number }) => o.id !== office.id);
       setOffices(updatedOffices);
-      navigate('/');
+      router.push('/');
     };
 
     return (
       <div className="max-w-md mx-auto bg-gray-50 min-h-screen">
         <header className="bg-white p-4 flex items-center gap-4">
-          <ArrowLeft className="w-6 h-6 cursor-pointer" onClick={() => navigate('/')} />
+          <ArrowLeft className="w-6 h-6 cursor-pointer" onClick={() => router.push('/')} />
           <h1 className="text-xl font-semibold">Office</h1>
         </header>
   
