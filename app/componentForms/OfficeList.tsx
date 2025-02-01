@@ -38,7 +38,7 @@ const OfficeList = () => {
         </header>
   
         <div className="p-4 space-y-4">
-          {offices.map((office: { id: number; name: string; color: string; phone: string; email: string; capacity: number; address: string; staffMembers: any[] }) => (
+          {offices.map((office: { id: number; name: string; color: string; phone: string; email: string; capacity: number; address: string; staffMembers: string }) => (
             <Card 
               key={office.id}
               className="p-4 cursor-pointer"

@@ -57,7 +57,7 @@ const OfficeDetail = () => {
     );
   
     const handleAddStaffMember = (staffData: { firstName: string; lastName: string; avatar?: StaticImageData | null }) => {
-      const updatedOffices = offices.map((o: { id: number; staffMembers: any[] }) => {
+      const updatedOffices = offices.map((o: { id: number; staffMembers: { id: number; firstName: string; lastName: string; avatar?: StaticImageData | null }[] }) => {
         if (o.id === office.id) {
           return {
             ...o,
@@ -70,8 +70,8 @@ const OfficeDetail = () => {
       setShowAddStaffDialog(false);
     };
   
-    const handleEditStaffMember = (staffData: {}) => {
-      const updatedOffices = offices.map((o: { id: number; staffMembers: any[] }) => {
+    const handleEditStaffMember = (staffData: object = {}) => {
+      const updatedOffices = offices.map((o: { id: number; staffMembers: { id: number; firstName: string; lastName: string; avatar?: StaticImageData | null }[] }) => {
         if (o.id === office.id) {
           return {
             ...o,
@@ -88,7 +88,7 @@ const OfficeDetail = () => {
     };
   
     const handleDeleteStaffMember = () => {
-      const updatedOffices = offices.map((o: { id: number; staffMembers: any[] }) => {
+      const updatedOffices = offices.map((o: { id: number; staffMembers: { id: number; firstName: string; lastName: string; avatar?: StaticImageData | null }[] }) => {
         if (o.id === office.id) {
           return {
             ...o,
