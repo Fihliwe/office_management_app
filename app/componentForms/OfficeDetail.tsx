@@ -1,4 +1,5 @@
-'use client'; 
+"use client"; 
+
 import React from "react";
 import { useState, useEffect } from "react";
 import { ArrowLeft, Search, MoreVertical } from "lucide-react";
@@ -29,7 +30,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import OfficeForm from "./OfficeForm";
 import { StaffData } from "./StaffForm";
-import { useRouter, } from "next/router";
+import { useRouter, } from "next/navigation";
 import { useParams } from "next/navigation";
 
 const OfficeDetail = () => {

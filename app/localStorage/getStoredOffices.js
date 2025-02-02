@@ -1,5 +1,12 @@
-const getStoredOffices = () => {
-  if (typeof window !== 'undefined') {
+import { useEffect, useState } from "react";
+
+const useStoredOffices = () => {
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+  if (typeof window != hydrated) {
     const stored = localStorage.getItem('offices');
     return stored ? JSON.parse(stored) : [
       {
@@ -25,4 +32,4 @@ const getStoredOffices = () => {
   return []; // Default to an empty array if `window` is undefined (SSR)
 };
 
-export default getStoredOffices;
+export default useStoredOffices;
