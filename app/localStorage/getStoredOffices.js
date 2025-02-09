@@ -1,6 +1,12 @@
-const useStoredOffices = () => {
+import { useEffect, useState } from "react";
 
-  if (typeof window !== "undefined" ) {
+const useStoredOffices = () => {
+  const [undefined, setUndefined] = useState(false);
+
+  useEffect(() => {
+    setUndefined(true)
+  }, []);
+  if (typeof window !== undefined){       
     const stored = localStorage.getItem('offices');
     return stored ? JSON.parse(stored) : [
       {
@@ -12,7 +18,7 @@ const useStoredOffices = () => {
         capacity: 25,
         address: '10 Wille van Schoor Dr, Bo-Oakdale, Cape Town, 7530',
         staffMembers: [
-          { id: 1, firstName: 'Jacques', lastName: 'Jordaan', avatar: 1 },
+          { id: 1, firstName: 'Jacques', lastName: 'Jordaan', Avatar1},
           { id: 2, firstName: 'Daniel', lastName: 'Novitzkas', avatar: 2 },
           { id: 3, firstName: 'Brandon', lastName: 'Watkins', avatar: 3 },
           { id: 4, firstName: 'Ryan', lastName: 'Duell', avatar: 4 },
